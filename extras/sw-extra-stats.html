@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>Songle Widget API Examples</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css" />
+    <link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <header class="navbar navbar-default" role="banner">
+      <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://github.com/ongacrest/songle-widget-api-examples">Songle Widget API Examples</a>
+        </div>
+        <nav class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="https://github.com/ongacrest/songle-widget-api-examples/blob/master/extras/src/sw-extra-stats.coffee" target="_blank">ソースコード表示</a>
+            </li>
+            <li>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container" role="documentation">
+      <div class="row">
+        <div class="col-sm-12">
+
+          <!--
+            @author Takahiro INOUE <takahiro.inoue@aist.go.jp>
+            @license Songle Widget API Examples
+
+            Visit http://songle.jp/info/Credit.html OR http://widget.songle.jp/docs/v1 for documentation.
+            Copyright (c) 2015 National Institute of Advanced Industrial Science and Technology (AIST)
+
+            Distributed under the terms of the MIT license only for non-commercial purposes.
+            http://www.opensource.org/licenses/mit-license.html
+
+            This notice shall be included in all copies or substantial portions of this Songle Widget API Examples.
+            If you are interested in commercial use of Songle Widget API, please contact "songle-ml@aist.go.jp".
+          -->
+          <script src="./sw-extra-stats.js"></script>
+
+          <script src="https://widget.songle.jp/v1/api.js"></script>
+          <script>
+            window.onload =
+              function()
+              {
+                var songleWidgetElement =
+                  SongleWidgetAPI.createSongleWidgetElement({
+                    api: "songle-widget-api-example",           // Same option with `data-api` attribute.
+                    url: "www.youtube.com/watch?v=PqJNc9KVIZE", // Same option with `data-url` attribute.
+                    songAutoPlay: true,                         // Same option with `data-song-auto-play` attribute.
+                    songAutoLoop: true                          // Same option with `data-song-auto-loop` attribute.
+                  });
+
+                document.body.appendChild(songleWidgetElement);
+              }
+          </script>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
