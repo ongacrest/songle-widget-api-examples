@@ -59,22 +59,21 @@ __swExtra__.initializeAllModule
 ###
 readySongleWidget =
   (songleWidget) ->
+    rootElement = document.querySelector("[class*=sw-extra-visualizer")
+
     setTimeout ->
       # ---- Intiailize EaselJs and TweenJs.
-      stageElement = document.querySelector(".sw-extra-visualizer")
+      stageElement = document.createElement("canvas")
+      stageElement.className = "sw-extra-visualizer"
+      stageElement.width  = getScreenSizeW()
+      stageElement.height = getScreenSizeH()
 
-      if !stageElement
-        stageElement = document.createElement("canvas")
-        stageElement.className = "sw-extra-visualizer"
-        stageElement.width  = getScreenSizeW()
-        stageElement.height = getScreenSizeH()
+      stageElement.style.position = "absolute"
+      stageElement.style.left     =  0 + "px"
+      stageElement.style.top      =  0 + "px"
+      stageElement.style.zIndex   = -1
 
-        stageElement.style.position = "fixed"
-        stageElement.style.left   = 0 + "px"
-        stageElement.style.top    = 0 + "px"
-        stageElement.style.zIndex = -1
-
-        document.body.appendChild(stageElement)
+      if !rootElement then document.body.appendChild(stageElement) else rootElement.appendChild(stageElement)
 
       addEventListener "scroll",
         ->
@@ -276,7 +275,8 @@ readySongleWidget =
     ###
     getScreenSizeW =
       ->
-        return window.innerWidth
+        return if rootElement then rootElement.clientWidth  else window.innerWidth
+
 
     ###
       @function
@@ -284,7 +284,7 @@ readySongleWidget =
     ###
     getScreenSizeH =
       ->
-        return window.innerHeight
+        return if rootElement then rootElement.clientHeight else window.innerHeight
 
     ###
       @function
