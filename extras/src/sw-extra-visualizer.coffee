@@ -77,14 +77,16 @@ readySongleWidget =
 
       addEventListener "scroll",
         ->
-          stageElement.width  = getScreenSizeW()
-          stageElement.height = getScreenSizeH()
+          stageElement.style.top = window.scrollY
+          stageElement.width     = getScreenSizeW()
+          stageElement.height    = getScreenSizeH()
         , false
 
       addEventListener "resize",
         ->
-          stageElement.width  = getScreenSizeW()
-          stageElement.height = getScreenSizeH()
+          stageElement.style.top = window.scrollY
+          stageElement.width     = getScreenSizeW()
+          stageElement.height    = getScreenSizeH()
         , false
 
       stage = new createjs.Stage(stageElement)
